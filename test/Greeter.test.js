@@ -26,7 +26,7 @@ describe('Greeter', () => {
   });
 
   it('has a default message', async () => {
-    const message = await greeter.methods.message().call();
+    const message = await greeter.methods.greeting().call();
     assert.equal(message, 'Hey world');
   });
 });
