@@ -24,4 +24,9 @@ describe('Greeter', () => {
   it('deploys an account', () => {
     assert.ok(greeter.options.address);
   });
+
+  it('has a default message', async () => {
+    const message = await greeter.methods.message().call();
+    assert.equal(message, 'Hey world');
+  });
 });
