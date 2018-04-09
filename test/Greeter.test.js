@@ -7,3 +7,16 @@ const provider = ganache.provider();
 const web3 = new Web3(provider);
 
 const { interface, bytecode } = require('../compile');
+
+let accounts;
+let greeter;
+
+beforeEach(async () => {
+  account = await web3.eth.getAccounts();
+  greeter = await new web3.eth.Contract(JSON.parse(interface))
+    .deploy({ data: bytecode, arguments: ['Hey world']})
+    .send({ from: accounts[0], gas: '1000000'});
+    
+  greeter.setProvider(provider);
+});
+
