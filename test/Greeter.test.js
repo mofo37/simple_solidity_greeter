@@ -29,4 +29,10 @@ describe('Greeter', () => {
     const message = await greeter.methods.greeting().call();
     assert.equal(message, 'Hey world');
   });
+
+  it('changes default message', async () => {
+    await greeter.methods.setGreeting('how goes it?').send({ from: accounts[0] });
+    const message = await greeter.methods.greeting().call();
+    assert.equal(message, 'how goes it?');
+  });
 });
