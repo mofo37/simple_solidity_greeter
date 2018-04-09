@@ -12,7 +12,7 @@ let accounts;
 let greeter;
 
 beforeEach(async () => {
-  account = await web3.eth.getAccounts();
+  accounts = await web3.eth.getAccounts();
   greeter = await new web3.eth.Contract(JSON.parse(interface))
     .deploy({ data: bytecode, arguments: ['Hey world']})
     .send({ from: accounts[0], gas: '1000000'});
