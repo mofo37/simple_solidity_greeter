@@ -20,3 +20,8 @@ beforeEach(async () => {
   greeter.setProvider(provider);
 });
 
+describe('Greeter', () => {
+  it('deploys an account', () => {
+    assert.ok(greeter.options.address);
+  });
+});
